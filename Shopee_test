@@ -1,0 +1,90 @@
+'''数的划分
+详细描述
+将整数n分成k份，且每份不能为空，任意两种分法不能相同(不考虑顺序)。
+
+例如: n = 7, k = 3, 下面三种分法被认为是相同的：
+
+1, 1, 5; 1, 5, 1; 5, 1, 1。
+
+问有多少种不同的分法。
+
+输入: n, k (6 < n < 200, 1 < k < 7)
+
+输出: 一个整数 (所有可能的分法总数)
+
+其他
+时间限制: 1000ms
+
+内存限制: 256.0MB'''
+# Note: 类名、方法名、参数名已经指定，请勿修改
+#
+#
+#
+# @param n int整型 整数n
+# @param k int整型 分为k份
+# @return int整型
+
+
+# class Solution:
+#     def divide(self, n, k) :
+#         Shang = int(n/k)
+#         Yu = n%k
+#         return (Shang-1)*k+Yu
+#
+#
+# x1 = Solution()
+# res = x1.divide(7,3)
+# res
+
+
+def devide(n, k, min_val=1):
+    res = []
+    # if k == 1:
+    #     return [[n]]
+    for val in range(min_val, n // k + 1):
+        sub_res = devide(n - val, k - 1, val)
+        res.extend([[val] + x for x in sub_res])
+    return res
+    
+    
+    '''
+寻找数组的平衡点
+详细描述
+给出一个数组，你需要找到在这个数组中的“平衡点”。
+
+一个数组的“平衡点”满足
+在它左边的所有数字的和等于在它右边的所有数字的和（不包括平衡点本身）。
+
+你的代码应该返回平衡数的下标，如果平衡数存在多个，返回最小的下标。
+
+
+
+1.
+保证存在一个可行解
+
+2.
+3 <= length(inputArray) <= 10 ^ 5
+
+3.
+1 <= inputArray[i] <= 2 * 10 ^ 4, where
+0 <= i < length(inputArray)'''
+
+class Solution:
+    def findBalancedIndex(self, inputArray) :
+        # hashmap = {}
+        k = len(inputArray)
+        # BalancedNum
+        Sum = sum(inputArray)
+        for i,BalancedNum in enumerate(inputArray):
+            x = (Sum - BalancedNum)/2
+            Presum = 0
+            Point = i
+            for j in range(Point):
+                Presum = Presum + inputArray[j]
+                if Presum==x:
+                    return Point
+
+
+x = Solution()
+res = x.findBalancedIndex([1,2,3,4,6])
+res
