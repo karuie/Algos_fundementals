@@ -1,2 +1,2 @@
 # JustCoding
-Leetcode, basic data structure and algorithms, etc
+Documentation for Leetcode, basic data structure and algorithms, etc
