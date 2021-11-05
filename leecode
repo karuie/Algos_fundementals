@@ -28,3 +28,34 @@ class Solution:
 x = ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5)))))
 y = Solution()
 result = y.reverseBetween(x,3,4)
+
+
+# 三数之和
+
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        if len(nums) == 1 or not nums: # 首先，我们总得考虑特殊得情况
+            return []
+        res = [] # 这里我们先设定一个res来存储之后的答案
+        nums.sort() # 有一个道理是如果你有一个序列数但不知道怎么处理，就先对它进行排序
+        target = 0 # 之和是0
+        for i in range(len(nums)-2): # 三数之和只用到倒数第三就可以，剩下的可以用指针去指代
+            right = len(nums)-1
+            left = i+1
+            while left < right:
+                total = nums[i] + nums[left] + nums[right]
+                if total == target:
+                    if [nums[i],nums[left],nums[right]] not in res: # 先确保算出来的不是已经存在的答案
+                        res.append(nums[i],nums[left],nums[right])
+                    left += 1
+                    right -= 1
+                elif total <0:
+                    left += 1
+                elif total > 0:
+                    right -= 1
+        return res
+
+
+
+
+
