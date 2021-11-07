@@ -1,0 +1,64 @@
+# # 二叉树 深度优先
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+#
+# class Solution:
+#     def inorderTraversal(self, root):
+#         if root is None:
+#             return []
+#         test1 = self.inorderTraversal(root.left)
+#         test2 = self.inorderTraversal(root.right)
+#         test3 = self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
+# # 只需要取root的值；
+#         return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
+#         # 数组元素 '+' 等于包含新元素的数组
+#
+# # 函数体本身功能的迭代，而不是变量层面的迭代。所以用定义TreeNode()变量来循环迭代在这个题上是没有效果的。注意区分。
+# X = Solution()
+# test = TreeNode(1,TreeNode(2,TreeNode(4),TreeNode(5)),TreeNode(3))
+# test
+# q = []
+# q.append(test)
+# length = len(q)
+#
+# res = X.inorderTraversal(test)
+# print(res)
+# res
+
+# 二叉树 广度优先
+
+class Solution:
+    def levelOrder(self, root):
+
+        def traverseLayer(toTraverse):  # return traversedList, nextQueue:
+            output = []
+            nextQueue = []
+            for node in toTraverse:
+                if node is not None:
+                    output.append(node.val)
+                    nextQueue.append(node.left)
+                    nextQueue.append(node.right)
+
+            return output, nextQueue
+
+        output = []
+        toTraverse = [root]
+
+        while (toTraverse):
+            temp, toTraverse = traverseLayer(toTraverse)
+
+            if temp: output.append(temp)
+
+        return output
+
+X = Solution()
+test = TreeNode(1,TreeNode(2,TreeNode(4),TreeNode(5)),TreeNode(3))
+test
+
+res = X.levelOrder(test)
+print(res)
+res
