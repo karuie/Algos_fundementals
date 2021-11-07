@@ -46,8 +46,10 @@ class Solution:
                     queueT.append(node.left)
                     queueT.append(node.right)
 
-            res2.append(res)
             toTraveser = queueT
+            if res:
+                res2.append(res)
+
        return res2     
 
 
