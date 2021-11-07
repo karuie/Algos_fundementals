@@ -31,6 +31,29 @@ class TreeNode:
 
 # 二叉树 广度优先
 
+# 迭代函数参数，treenode类型保持不变，用while改变迭代参数，for循环遍历每层的node，也就是构造队列
+class Solution:
+    def levelOrder(self, root):
+    
+        res2 = []
+        toTraveser = [root]
+        while toTraveser:
+            res = []
+            queueT = []
+            for node in toTraveser:
+                if node is not None:
+                    res.append(node.val)
+                    queueT.append(node.left)
+                    queueT.append(node.right)
+
+            res2.append(res)
+            toTraveser = queueT
+       return res2     
+
+
+
+
+# 方法2，写（成）函数
 class Solution:
     def levelOrder(self, root):
 
