@@ -1,3 +1,92 @@
+# 十六进制回文数
+# 详细描述
+# 输入一个正整数，判断它的十六进制形式是否为回文数。
+#
+# 注意：不允许使用标准库中任何可以直接将整数转换为十进制字符串的函数。
+#
+
+# import sys
+#
+# if __name__ == "__main__":
+#     n = int(sys.stdin.readline().strip())
+#     for i in range(n):
+#         line = sys.stdin.readline().strip()
+#         num = line.split()
+#         print(int(num[0]) + int(num[1]))
+#
+
+
+import sys
+
+
+
+# convert to 16
+n =417
+
+Dict = {10:"A", 11:"B", 12:"C", 13: "D", 14:"E", 15: "F"}
+
+def CovertSixT(n):
+    Figure = n
+    M = []
+    while Figure >= 16:
+        N_last = []
+        N = Figure // 16
+        M_pre = Figure % 16
+        N_last = Figure // 16
+        if M_pre >= 10:
+            M_pre = Dict[M_pre]
+        M.append(M_pre)
+        Figure = N
+    if N_last >= 10:
+        N_last = Dict[N_last]
+    M.append(N_last)
+    print(M)
+    return M
+
+# for i in Dict:
+#     print(i)
+M = CovertSixT(n)
+
+def Huiwen(M):
+    flag = 1
+    New_flag = 1
+    if len(M)//2==0:
+        for i in range(len(M) // 2 - 1):
+            if M[i]!=M[len(M)-1-i]:
+                New_flag = 0
+            else:
+                New_flag = 1
+
+            flag = flag*New_flag
+
+        return flag
+
+    else:
+        for i in range(len(M) // 2 - 1):
+            if M[i] != M[len(M) - 1 - i]:
+                New_flag = 0
+            else:
+                New_flag = 1
+            flag = flag * New_flag
+        return flag
+
+res = Huiwen(M)
+
+print(res)
+
+# if __name__ == "__main__":
+#     for line in sys.stdin:
+        # n = int(line)
+        # M = CovertSixT(n)
+        # res = Huiwen(M)
+        # print(res)
+        n = line.split()
+        int[n[0]]
+        # for i in range(len[n]-1):
+        #     a = int(n[i])
+
+
+
 '''数的划分
 详细描述
 将整数n分成k份，且每份不能为空，任意两种分法不能相同(不考虑顺序)。
