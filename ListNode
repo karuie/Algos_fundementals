@@ -1,3 +1,46 @@
+# TMD，竟然能成功，这个死Output
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def addTwoNumbers(self, l1,  l2):
+        Output = ListNode()
+        l3 = Output
+        top = 0
+        if  l1.val == 0 and l2.val == 0:
+            return 0 + top
+        elif l1.val == 0 and l2.val != 0:
+            return l2 + top
+        elif l1.val != 0 and l2.val == 0:
+            return l1 + top
+        else:
+            while l1:
+                sum = l1.val + l2.val+top
+                temp = sum % 10
+                top = sum // 10
+                # l3.val = temp
+                l3.val = temp
+                l3.next = ListNode()
+                l3 = l3.next
+                if l1 is not None: l1 = l1.next
+                if l2 is not None: l2 = l2.next
+        return Output
+
+l1 = ListNode(2,ListNode(4,ListNode(3)))
+l2 = ListNode(5,ListNode(6,ListNode(4)))
+X = Solution()
+res = X.addTwoNumbers(l1,l2)
+print(res)
+res
+
+
+
+
+
 # 反转链表II
 # Definition for singly-linked list.
 class ListNode:
