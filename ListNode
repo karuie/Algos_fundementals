@@ -1,3 +1,47 @@
+
+
+# 深刻体验了一把一步一步一个代码一个代码地调的“乐趣”！！！
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+                # 一个是最终的输出，一个是中间用来临时存储
+        Output = ListNode()
+        l3 = Output
+                # 用top来存进位的数
+        top = 0
+
+        while l1 or l2 or top:
+            if l1:
+                top += l1.val
+                l1 = l1.next
+
+            if l2:
+                top += l2.val
+                l2 = l2.next
+
+                # sum = l1.val + l2.val+top
+            temp = top % 10
+            top = top // 10
+                # l3.val = temp
+                # l3.next = ListNode()
+            l3.next = ListNode(temp)
+            l3 = l3.next
+
+                # l3.next = ListNode(temp)
+
+                # print(Output)
+                # if l1.next is not None:
+                #     l3.next = ListNode()
+                #     l3 = l3.next
+        return Output.next
+
+
+
 # TMD，竟然能成功，这个死Output
 
 # Definition for singly-linked list.
